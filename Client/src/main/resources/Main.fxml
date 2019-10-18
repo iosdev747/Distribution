@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXChipView?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1"
+      fx:controller="fxml.MainController">
+  <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0"
+                  style="-fx-background-color: #222222;" VBox.vgrow="ALWAYS">
+      <children>
+          <Pane prefHeight="58.0" prefWidth="1280.0" style="-fx-background-color: #606368;">
+               <children>
+                   <JFXButton fx:id="uploadButton" buttonType="RAISED" layoutX="356.0" layoutY="14.0"
+                              onAction="#uploadAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Upload File"/>
+                   <JFXButton fx:id="downloadButton" buttonType="RAISED" layoutX="128.0" layoutY="14.0"
+                              onAction="#downloadAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Downloads"/>
+                   <JFXButton fx:id="searchPaneButton" buttonType="RAISED" layoutX="242.0" layoutY="14.0"
+                              onAction="#searchPaneButtonAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Search"/>
+                   <JFXButton fx:id="dashboardButton" buttonType="RAISED" layoutX="14.0" layoutY="14.0"
+                              onAction="#dashboardButtonAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Dashboard"/>
+                   <JFXButton fx:id="videoPaneButton" buttonType="RAISED" layoutX="1166.0" layoutY="14.0"
+                              onAction="#videoAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Video"/>
+                   <JFXButton fx:id="recommendButton" buttonType="RAISED" layoutX="470.0" layoutY="14.0"
+                              onAction="#recommendAction" prefWidth="100.0"
+                              style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Recommend"/>
+               </children>
+            </Pane>
+          <Pane fx:id="uploadPane" layoutX="10.0" layoutY="70.0" prefHeight="590.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;" visible="false">
+              <children>
+                  <Pane layoutX="35.0" layoutY="18.0" prefHeight="58.0" prefWidth="1193.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label layoutX="483.0" layoutY="12.0" text="Upload File" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="30.0"/>
+                              </font>
+                          </Label>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="35.0" layoutY="96.0" prefHeight="404.0" prefWidth="733.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXTextField fx:id="typeTextField" focusColor="#bb86fc" layoutX="34.0" layoutY="116.0"
+                                        prefHeight="31.0" prefWidth="649.0" promptText="File type Eg. zip, mp4, iso"
+                                        style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                                        unFocusColor="WHITE">
+                              <font>
+                                  <Font size="15.0"/>
+                              </font>
+                          </JFXTextField>
+                          <JFXChipView fx:id="insideFileTypesChipView" layoutX="34.0" layoutY="236.0" maxHeight="150.0"
+                                       maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0"
+                                       prefWidth="300.0"
+                                       style="-fx-background-color: #67ffc8; -fx-background-radius: 15;"/>
+                          <JFXChipView fx:id="tagsChipView" layoutX="396.0" layoutY="236.0" maxHeight="150.0"
+                                       maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0"
+                                       prefWidth="300.0"
+                                       style="-fx-background-color: #67ffc8; -fx-background-radius: 15;"/>
+                          <Label layoutX="396.0" layoutY="199.0" text="Tags" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </Label>
+                          <Label layoutX="34.0" layoutY="199.0" text="Inside File Types" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </Label>
+                          <JFXButton fx:id="addFileButton" buttonType="RAISED" layoutX="34.0" layoutY="34.0"
+                                     onAction="#addFileAction" ripplerFill="BLACK"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;"
+                                     text="SelectFile">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </JFXButton>
+                          <Label fx:id="fileselectedLabel" layoutX="230.0" layoutY="39.0" text="No File Selected"
+                                 textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </Label>
+                          <Line endX="13.0" endY="181.0" layoutX="353.0" layoutY="187.0" startX="13.0" startY="67.0"
+                                stroke="#67ffc8"/>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="1057.0" layoutY="516.0" prefHeight="58.0" prefWidth="171.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 10;">
+                      <children>
+                          <JFXButton fx:id="goButton" buttonType="RAISED" layoutX="113.0" layoutY="12.0"
+                                     onAction="#goAction" ripplerFill="BLACK"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Go">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </JFXButton>
+                          <JFXButton fx:id="cancelButton" buttonType="RAISED" layoutX="15.0" layoutY="12.0"
+                                     onAction="#cancelAll" ripplerFill="BLACK"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Cancel">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </JFXButton>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="801.0" layoutY="96.0" prefHeight="404.0" prefWidth="427.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXListView fx:id="searchenginesListView1" layoutX="34.0" layoutY="66.0" prefHeight="319.0"
+                                       prefWidth="360.0"/>
+                          <Label layoutX="34.0" layoutY="14.0" text="Select atleast one Search Engine" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </Label>
+                          <Line endX="455.0" endY="41.0" layoutX="-46.0" layoutY="5.0" startX="63.0" startY="41.0"
+                                stroke="#67ffc8"/>
+                      </children>
+                  </Pane>
+              </children>
+          </Pane>
+          <Pane fx:id="downloadPane" layoutX="10.0" layoutY="70.0" prefHeight="590.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;">
+              <children>
+                  <Pane layoutX="701.0" layoutY="507.0" prefHeight="58.0" prefWidth="181.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXButton fx:id="playButton" buttonType="RAISED" layoutX="15.0" layoutY="10.0"
+                                     onAction="#playAction"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Play">
+                              <font>
+                                  <Font name="System Bold Italic" size="18.0"/>
+                              </font>
+                          </JFXButton>
+                          <JFXButton fx:id="pauseButton" buttonType="RAISED" layoutX="92.0" layoutY="10.0"
+                                     onAction="#pauseAction"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Pause">
+                              <font>
+                                  <Font name="System Bold Italic" size="18.0"/>
+                              </font>
+                          </JFXButton>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="701.0" layoutY="96.0" prefHeight="395.0" prefWidth="525.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;"/>
+                  <Pane layoutX="35.0" layoutY="18.0" prefHeight="58.0" prefWidth="1193.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label layoutX="489.0" layoutY="12.0" text="Download List" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="30.0"/>
+                              </font>
+                          </Label>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="35.0" layoutY="96.0" prefHeight="429.0" prefWidth="626.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXListView fx:id="listView" layoutX="14.0" layoutY="60.0" prefHeight="358.0"
+                                       prefWidth="599.0"/>
+                          <Line endX="543.0" endY="41.0" layoutX="69.0" layoutY="2.0" startX="-53.0" startY="41.0"
+                                stroke="#67ffc8"/>
+                          <Label layoutX="17.0" layoutY="14.0" text="Download List" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="18.0"/>
+                              </font>
+                          </Label>
+                      </children>
+                  </Pane>
+              </children>
+          </Pane>
+          <Pane fx:id="searchPane" layoutX="10.0" layoutY="70.0" prefHeight="590.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;" visible="false">
+              <children>
+                  <JFXButton fx:id="searchButton" buttonType="RAISED" layoutX="399.0" layoutY="501.0"
+                             onAction="#searchAction" prefHeight="25.0" prefWidth="286.0"
+                             style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Search"/>
+                  <JFXButton fx:id="okButton" buttonType="RAISED" layoutX="545.0" layoutY="537.0"
+                             onAction="#okButtonAction" prefHeight="25.0" prefWidth="140.0"
+                             style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Add to Download"/>
+                  <JFXListView fx:id="torrentSearchListView" layoutX="399.0" layoutY="209.0" prefHeight="274.0"
+                               prefWidth="286.0"/>
+                  <Pane fx:id="searchTorrentInfoPane" layoutX="736.0" layoutY="20.0" prefHeight="319.0"
+                        prefWidth="491.0" style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label fx:id="searchHashLabel" layoutX="180.0" layoutY="45.0" text="1234567890987654323456789"
+                                 textFill="WHITE"/>
+                          <Label fx:id="searchNameLabel" layoutX="23.0" layoutY="14.0" text="Torrent Name"
+                                 textFill="WHITE"/>
+                          <Label fx:id="searchTypeLabel" layoutX="180.0" layoutY="65.0" text="Movie" textFill="WHITE"/>
+                          <Label fx:id="searchAuthorLabel" layoutX="380.0" layoutY="14.0" prefHeight="17.0"
+                                 prefWidth="98.0" text="\@abcd" textFill="WHITE"/>
+                          <Label fx:id="searchCreatedOnLabel" layoutX="380.0" layoutY="37.0" prefHeight="17.0"
+                                 prefWidth="98.0" text="createdon" textFill="WHITE"/>
+                          <Label fx:id="searchSizeLabel" layoutX="180.0" layoutY="85.0" text="size" textFill="WHITE"/>
+                          <Label fx:id="searchNoOfChunksLabel" layoutX="180.0" layoutY="105.0" text="noofchunks"
+                                 textFill="WHITE"/>
+                          <JFXListView fx:id="Tags" layoutX="258.0" layoutY="200.0" prefHeight="100.0"
+                                       prefWidth="210.0"/>
+                          <JFXListView fx:id="InsideFileType" layoutX="23.0" layoutY="200.0" prefHeight="100.0"
+                                       prefWidth="210.0"/>
+                          <Label fx:id="searchNoOfOwlLinksLabel" layoutX="180.0" layoutY="125.0" text="NoOfOwlLinks"
+                                 textFill="WHITE"/>
+                          <Line endX="-31.0" endY="91.0" layoutX="63.0" layoutY="84.0" startX="-31.0" startY="-40.0"
+                                stroke="#67ffc8"/>
+                          <Label layoutX="50.0" layoutY="45.0" text="Hash : " textFill="WHITE"/>
+                          <Label layoutX="50.0" layoutY="65.0" text="File Type : " textFill="WHITE"/>
+                          <Label layoutX="50.0" layoutY="85.0" text="Size" textFill="WHITE"/>
+                          <Label layoutX="50.0" layoutY="105.0" text="Number of chunks" textFill="WHITE"/>
+                          <Label layoutX="50.0" layoutY="125.0" text="Number of trackers" textFill="WHITE"/>
+                      </children>
+                  </Pane>
+                  <Pane fx:id="searchCommentPane" layoutX="736.0" layoutY="345.0" prefHeight="230.0" prefWidth="491.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label layoutX="14.0" layoutY="14.0" text="comment" textFill="WHITE"/>
+                          <JFXTextField fx:id="commentFiled" layoutX="14.0" layoutY="197.0" prefHeight="25.0"
+                                        prefWidth="379.0" promptText="Type your comment"
+                                        style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+                          <JFXButton fx:id="commentButton" layoutX="403.0" layoutY="197.0" onAction="#doComment"
+                                     style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Comment"/>
+                          <JFXListView fx:id="commentsListView" layoutX="9.0" layoutY="41.0" prefHeight="143.0"
+                                       prefWidth="472.0"/>
+                          <JFXCheckBox fx:id="isAnonymous" layoutX="393.0" layoutY="14.0" text="Anonymous"
+                                       textFill="WHITE"/>
+                      </children>
+                  </Pane>
+                  <JFXListView fx:id="searchenginesListView" layoutX="399.0" layoutY="20.0" prefHeight="167.0"
+                               prefWidth="286.0"/>
+                  <JFXButton fx:id="videoPlayButton" buttonType="RAISED" layoutX="399.0" layoutY="537.0"
+                             onAction="#playVideoAction" prefHeight="25.0" prefWidth="62.0"
+                             style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Play"/>
+                  <Pane layoutX="35.0" layoutY="14.0" prefHeight="461.0" prefWidth="300.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXTextField fx:id="searchTextField" layoutX="76.0" layoutY="29.0" prefHeight="25.0"
+                                        prefWidth="210.0" promptText="File Name"
+                                        style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+                          <JFXTextField fx:id="fileTypeTextField" layoutX="76.0" layoutY="74.0" prefHeight="25.0"
+                                        prefWidth="210.0" promptText="File Type"
+                                        style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+                          <JFXChipView fx:id="tagsSearchChipView" layoutX="81.0" layoutY="281.0" maxWidth="200.0"
+                                       minWidth="200.0" prefWidth="200.0" style="-fx-background-color: white;"/>
+                          <JFXChipView fx:id="insidefileSearchChipView" layoutX="76.0" layoutY="147.0" maxWidth="200.0"
+                                       minWidth="200.0" prefWidth="200.0" style="-fx-background-color: white;"/>
+                          <Label layoutX="81.0" layoutY="258.0" text="Tags" textFill="WHITE"/>
+                          <Label layoutX="76.0" layoutY="124.0" text="Inside File Type" textFill="WHITE"/>
+                          <Pane layoutX="15.0" layoutY="15.0" prefHeight="429.0" prefWidth="44.0"
+                                style="-fx-background-color: #67ffc8; -fx-background-radius: 15;">
+                              <children>
+                                  <JFXCheckBox fx:id="nameCheckBox" layoutX="12.0" layoutY="20.0" text=" "/>
+                                  <JFXCheckBox fx:id="typeCheckBox" layoutX="12.0" layoutY="60.0" text=" "/>
+                                  <JFXCheckBox fx:id="insideFileCheckBox" layoutX="12.0" layoutY="109.0" text=" "/>
+                                  <JFXCheckBox fx:id="tagsCheckBox" layoutX="12.0" layoutY="243.0" text=" "/>
+                                  <JFXCheckBox fx:id="sizeCheckBox" layoutX="12.0" layoutY="391.0" text=" "/>
+                              </children>
+                          </Pane>
+                          <Pane layoutX="81.0" layoutY="398.0" opacity="0.2" prefHeight="39.0" prefWidth="200.0"
+                                style="-fx-background-color: #67ffc8; -fx-background-radius: 15;"/>
+                          <JFXSlider fx:id="sizeSlider" layoutX="125.0" layoutY="409.0"/>
+                          <Label layoutX="92.0" layoutY="408.0" text="Size" textFill="WHITE"/>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="35.0" layoutY="493.0" prefHeight="71.0" prefWidth="300.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <JFXTextField fx:id="fileHashTextField" layoutX="86.0" layoutY="23.0" prefHeight="25.0"
+                                        prefWidth="200.0" promptText="File Hash"
+                                        style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+                          <Pane layoutX="14.0" layoutY="13.0" prefHeight="46.0" prefWidth="45.0"
+                                style="-fx-background-color: #67ffc8; -fx-background-radius: 15;">
+                              <children>
+                                  <JFXCheckBox fx:id="fileHashCheckBox" layoutX="12.0" layoutY="15.0" text=" "/>
+                              </children>
+                          </Pane>
+                      </children>
+                  </Pane>
+                  <Line endX="-7.0" endY="384.0" layoutX="375.0" layoutY="134.0" startX="-7.0" startY="-74.0"
+                        stroke="#67ffc8"/>
+                  <Line endX="-7.0" endY="384.0" layoutX="716.0" layoutY="134.0" startX="-7.0" startY="-74.0"
+                        stroke="#67ffc8"/>
+              </children>
+          </Pane>
+          <Pane fx:id="dashboardPane" layoutX="10.0" layoutY="70.0" prefHeight="590.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;" visible="false">
+              <children>
+                  <Pane fx:id="torrentInfoPane" layoutX="14.0" layoutY="111.0" prefHeight="459.0" prefWidth="733.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label fx:id="downloadsLabel" layoutX="200.0" layoutY="150.0" text="~" textFill="WHITE"/>
+                          <Label layoutX="30.0" layoutY="150.0" text="Downloads" textFill="WHITE"/>
+                          <Label layoutX="14.0" layoutY="14.0" text="Torrent Information" textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold Italic" size="27.0"/>
+                              </font>
+                          </Label>
+                          <Label fx:id="torrentName" layoutX="200.0" layoutY="75.0" text="File Name" textFill="WHITE"/>
+                          <Label fx:id="torrentHash" layoutX="200.0" layoutY="100.0" text="file hash" textFill="WHITE"/>
+                          <Label fx:id="torrentCreatedOn" layoutX="200.0" layoutY="125.0" text="created on"
+                                 textFill="WHITE"/>
+                          <Label fx:id="torrentSize" layoutX="200.0" layoutY="175.0" text="size" textFill="WHITE"/>
+                          <Label fx:id="torrentNumberOfChunks" layoutX="200.0" layoutY="200.0" text="number of chunks"
+                                 textFill="WHITE"/>
+                          <JFXListView fx:id="torrentinsideFileTypeList" layoutX="497.0" layoutY="278.0"
+                                       prefHeight="156.0" prefWidth="200.0"/>
+                          <JFXListView fx:id="torrenttagsList" layoutX="267.0" layoutY="278.0" prefHeight="156.0"
+                                       prefWidth="200.0"/>
+                          <JFXListView fx:id="torrentchunksList" layoutX="32.0" layoutY="278.0" prefHeight="156.0"
+                                       prefWidth="200.0"/>
+                          <Label layoutX="30.0" layoutY="75.0" text="File Name" textFill="WHITE"/>
+                          <Label layoutX="30.0" layoutY="100.0" text="Hash" textFill="WHITE"/>
+                          <Label layoutX="30.0" layoutY="125.0" text="Created On" textFill="WHITE"/>
+                          <Label layoutX="30.0" layoutY="175.0" text="Size" textFill="WHITE"/>
+                          <Label layoutX="30.0" layoutY="200.0" text="Number Of Chunks" textFill="WHITE"/>
+                          <Line endX="375.0" layoutX="130.0" layoutY="52.0" startX="-111.0" stroke="#67ffc8"/>
+                          <Label layoutX="32.0" layoutY="247.0" text="Chunks" textFill="WHITE"/>
+                          <Label layoutX="267.0" layoutY="247.0" text="Tags" textFill="WHITE"/>
+                          <Label layoutX="497.0" layoutY="247.0" text="Inside File Type" textFill="WHITE"/>
+                          <Pane layoutX="572.0" layoutY="109.0" opacity="0.78" prefHeight="100.0" prefWidth="140.0"
+                                style="-fx-background-color: #373A44;"/>
+                      </children>
+                  </Pane>
+                  <JFXListView fx:id="myFileList" layoutX="784.0" layoutY="109.0" prefHeight="459.0" prefWidth="447.0"/>
+                  <Pane layoutX="14.0" layoutY="14.0" prefHeight="83.0" prefWidth="733.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label layoutX="14.0" layoutY="20.0" prefHeight="17.0" prefWidth="607.0" text="Dashboard"
+                                 textFill="WHITE">
+                              <font>
+                                  <Font name="Consolas Bold" size="36.0"/>
+                              </font>
+                          </Label>
+                      </children>
+                  </Pane>
+                  <Pane layoutX="784.0" layoutY="14.0" prefHeight="83.0" prefWidth="447.0"
+                        style="-fx-background-color: #373A44; -fx-background-radius: 15;">
+                      <children>
+                          <Label layoutX="14.0" layoutY="24.0" text="Email" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold Italic" size="24.0"/>
+                              </font>
+                          </Label>
+                          <Label fx:id="emailLabel" layoutX="103.0" layoutY="24.0" prefHeight="35.0" prefWidth="329.0"
+                                 text="Label" textAlignment="RIGHT" textFill="WHITE">
+                              <font>
+                                  <Font name="System Italic" size="23.0"/>
+                              </font>
+                          </Label>
+                      </children>
+                  </Pane>
+              </children>
+          </Pane>
+          <Pane fx:id="videoPane" layoutX="10.0" layoutY="70.0" prefHeight="590.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;" visible="false">
+              <children>
+                  <MediaView fx:id="mediaView" fitHeight="720.0" fitWidth="1180.0" preserveRatio="false"/>
+                  <Pane fx:id="controls" layoutX="14.0" layoutY="606.0" onMouseExited="#hidecontrolsAction"
+                        onMouseMoved="#showcontrolsAction" prefHeight="100.0" prefWidth="1150.0">
+                      <children>
+                          <JFXButton fx:id="pause" layoutX="550.0" layoutY="50.0" onAction="#PAUSE" prefHeight="45.0"
+                                     prefWidth="45.0" text="⏸">
+                              <font>
+                                  <Font size="19.0"/>
+                              </font>
+                          </JFXButton>
+                          <JFXButton fx:id="play" layoutX="505.0" layoutY="52.0" onAction="#PLAY" prefHeight="45.0"
+                                     prefWidth="45.0" text="▶">
+                              <font>
+                                  <Font size="20.0"/>
+                              </font>
+                          </JFXButton>
+                          <JFXButton fx:id="stop" layoutX="595.0" layoutY="52.0" onAction="#STOP" prefHeight="45.0"
+                                     prefWidth="45.0" text="■">
+                              <font>
+                                  <Font size="14.0"/>
+                              </font>
+                          </JFXButton>
+                          <Label contentDisplay="CENTER" layoutX="19.0" layoutY="53.0" prefHeight="45.0"
+                                 prefWidth="45.0" text="🔊">
+                              <font>
+                                  <Font size="22.0"/>
+                              </font>
+                          </Label>
+                          <JFXSlider fx:id="timeSlider" prefHeight="46.0" prefWidth="1150.0"/>
+                          <JFXSlider fx:id="volumeSlider" layoutX="42.0" layoutY="70.0"/>
+                      </children>
+                  </Pane>
+              </children>
+          </Pane>
+          <Pane layoutX="10.0" layoutY="666.0" prefHeight="46.0" prefWidth="1260.0"
+                style="-fx-background-color: #2C2E38; -fx-background-radius: 15;">
+              <children>
+                  <Label fx:id="sabKaLabel" layoutX="29.0" layoutY="15.0" prefHeight="17.0" prefWidth="1199.0" text=":3"
+                         textAlignment="CENTER" textFill="#1eff00"/>
+              </children>
+          </Pane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

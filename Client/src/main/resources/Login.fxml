@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #222222;"
+      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="fxml.LoginController">
+    <children>
+        <Pane fx:id="loginPane" layoutX="15.0" layoutY="15.0" prefHeight="370.0" prefWidth="570.0"
+              style="-fx-background-color: #2C2E38; -fx-background-radius: 15;">
+            <children>
+                <JFXTextField fx:id="usernameTextField" focusColor="#67ffc8" layoutX="218.0" layoutY="130.0"
+                              promptText="Email" style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                              unFocusColor="WHITE"/>
+                <JFXPasswordField fx:id="passwordField" focusColor="#67ffc8" layoutX="218.0" layoutY="190.0"
+                                  promptText="Password"
+                                  style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                                  unFocusColor="WHITE"/>
+            </children>
+        </Pane>
+        <Pane fx:id="registerPane" layoutX="15.0" layoutY="15.0" prefHeight="370.0" prefWidth="570.0"
+              style="-fx-background-color: #2C2E38; -fx-background-radius: 15;" visible="false">
+            <children>
+                <JFXTextField fx:id="registerUsernameTextField" focusColor="#67ffc8" layoutX="218.0" layoutY="126.0"
+                              promptText="Username" style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                              unFocusColor="WHITE"/>
+                <JFXTextField fx:id="registerEmailTextField" focusColor="#67ffc8" layoutX="218.0" layoutY="173.0"
+                              promptText="Email" style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                              unFocusColor="WHITE"/>
+                <JFXTextField fx:id="registerNameTextField" focusColor="#67ffc8" layoutX="218.0" layoutY="73.0"
+                              promptText="Name" style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"
+                              unFocusColor="WHITE"/>
+                <JFXDatePicker fx:id="dobDatePicker" layoutX="218.0" layoutY="256.0" promptText="D.O.B."
+                               style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+                <JFXPasswordField fx:id="registerPasswordField" layoutX="218.0" layoutY="216.0" promptText="Password"
+                                  style="-fx-prompt-text-fill: white; -fx-text-inner-color: #67ffc8;"/>
+            </children>
+        </Pane>
+        <JFXButton buttonType="RAISED" layoutX="377.0" layoutY="345.0" onAction="#login"
+                   style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Login"/>
+        <JFXButton buttonType="RAISED" layoutX="173.0" layoutY="345.0" onAction="#register"
+                   style="-fx-background-color: #67ffc8; -fx-background-radius: 10;" text="Register"/>
+    </children>
+</Pane>
